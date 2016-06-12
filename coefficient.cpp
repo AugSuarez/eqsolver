@@ -2,60 +2,59 @@
 #include <QTextStream>
 #include <QChar>
 
-Coefficient::Coefficient(QString s) : fractionRep{s}, numerString {getNumer(fractionRep, numerString, hasDenom)}
+Coefficient::Coefficient(QString s) : fractionRep{s}
 {
+    getNumer(fractionRep, numerInt, hasDenom);
+
     if(hasDenom)
-        getDenom(fractionRep, denomString);
+        getDenom(fractionRep, denomInt);
 }
 
-QString Coefficient::getNumer(QString& fractionRep, QString& numerString, bool& hasDenom)
+void Coefficient::getNumer(QString& fractionRep, int& numerInt, bool& hasDenom)
 {
-    QTextStream in(stdin);
+    QString numerString;
 
+    int numeratorSize = 0;
 
     for(int i = 0; i<fractionRep.size(); i++)
     {
-
-        QChar ch = fractionRep.at(0);
-        in >> ch;
-
-
+        QChar ch = fractionRep.at(i);
 
         if(ch.isNumber() || (ch.isSymbol() && (ch=='-' || ch=='+')) )
             numerString += ch;
 
-        else if (ch.isSymbol() && (ch=='/' || ch=='\\'))
+        else if (ch=='/' || ch=='\\')
         {
             hasDenom = true;
-            fractionRep.remove(0, 1);
-            return numerString;
+            numerInt = numerString.toInt();
+            fractionRep.remove(0,numeratorSize);
+            return;
         }
 
         else
-            return "Non-math char found";
+            numerInt = 0;
 
-        fractionRep.remove(0, 1);
+        numeratorSize++;
 
     }
 
-    return numerString;
+    numerInt = numerString.toInt();
 }
 
-
-QString Coefficient::getDenom(QString& fractionRep, QString& denomString)
+void Coefficient::getDenom(QString& fractionRep, int& denomInt)
 {
-    QTextStream in(stdin);
+    QString denomString;
 
-    QChar ch = fractionRep.at(0);
-    in >> ch;
+    for(int i = 0; i<fractionRep.size(); i++)
+    {
+        QChar ch = fractionRep.at(i);
 
-    if(ch.isNumber())
-        numerString += ch;
+        if(ch.isNumber())
+            denomString += ch;
 
-    else
-        return "Non math char found";
+        else
+            denomInt = 1;
+    }
 
-    fractionRep.remove(0, 1);
-
-    return denomString;
+    denomInt = denomString.toInt();
 }

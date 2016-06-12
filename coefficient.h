@@ -16,8 +16,8 @@ class Coefficient{
         Coefficient(QString s);
         ~Coefficient();
 
-        QString getNumer(QString& fractionRep, QString& numerString, bool& hasDenom);
-        QString getDenom(QString& fractionRep, QString& denomString);
+        void getNumer(QString& fractionRep, int& numerInt, bool& hasDenom);
+        void getDenom(QString& fractionRep, int& denomInt);
 
 };
 

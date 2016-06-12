@@ -63,12 +63,8 @@ void eqsolver::on_quit_clicked()
 
 void eqsolver::on_calculate_clicked()
 {
-    int xResult;
 
-    if(ui->x_1->text()!="" && ui->x_2->text()!="" && ui->x_3->text()!="")
-        xResult = ui->x_1->text().toInt() + ui->x_2->text().toInt() + ui->x_3->text().toInt();
-    else
-        xResult = 0;
+    Coefficient *x1 = new Coefficient(ui->x_1->text());//makes a fractional representation of the inputed text using string
 
-    ui->x_r->setText(QString::number(xResult));
+    ui->x_r->setText(QString::number(x1->denomInt));
 }
