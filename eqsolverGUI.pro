@@ -16,7 +16,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        eqsolver.cpp
+        eqsolver.cpp \
+    coefficient.cpp
 
 HEADERS  += eqsolver.h \
     coefficient.h

@@ -23,17 +23,21 @@
     *has QString numerString, denomString
     *has int numerInt, denomInt=1
     *has bool hasDenom = false
+    *constructor uses fractionRep, and builds all the rest from there
+	*fractionRep is the string obtained from the selected ui->lineEdit
+    *Coefficient(lineEdit.text())
+	*initialize fractionrep with lineEdit.text()
+	*getNumer()
+	*if hasDenom = true then getDenom()
 
 
 *while line edit string is not null "in >> ch""
-*getNumer()
-*if hasDenom = true getDenom()
 
-QString readNumerator(string& numeratorString = "", bool& hasDenominator)
+QString getNumer(string& fractionrep, string& numeratorString = "", bool& hasDenominator)
 {
-    QTextStream in(lineEditString);
+    QTextStream in(fractionrep);
 	
-    while(!lineEditString.isNull())
+    while(!fractionrep.isNull())
     {
 		
         if (ch.isNumber())

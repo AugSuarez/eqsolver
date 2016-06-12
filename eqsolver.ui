@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>522</width>
-    <height>590</height>
+    <width>530</width>
+    <height>650</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@ background-color:#fbfbfb;
 }</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QFrame" name="frame_2">
+   <widget class="QFrame" name="headerframe">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -27,6 +27,11 @@ background-color:#fbfbfb;
       <width>531</width>
       <height>151</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Ebrima</family>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QFrame{
@@ -42,7 +47,7 @@ border-bottom-color:#ddd;
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="namelabel">
+    <widget class="QFrame" name="nameframe">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -51,37 +56,95 @@ border-bottom-color:#ddd;
        <height>51</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <family>MS Reference Sans Serif</family>
-       <pointsize>14</pointsize>
-       <weight>50</weight>
-       <bold>false</bold>
-      </font>
-     </property>
      <property name="styleSheet">
-      <string notr="true">QLabel{
+      <string notr="true">QFrame{
+background-color:#EF5350;
+border-style:none;
+color:#fff;
+}
+QLabel{
 background-color:#EF5350;
 border-style:none;
 color:#fff;
 }</string>
      </property>
-     <property name="text">
-      <string>     Matrix Solver</string>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
      </property>
+     <widget class="QLabel" name="namelabel">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>0</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Ebrima</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string> Matrix Solver</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="authorlabel">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>0</y>
+        <width>151</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Ebrima</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="text">
+       <string> Augusto Suarez</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </widget>
+    <zorder>nameframe</zorder>
+    <zorder>mainframe</zorder>
    </widget>
    <widget class="QFrame" name="mainframe">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>70</y>
-      <width>441</width>
-      <height>481</height>
+      <y>80</y>
+      <width>440</width>
+      <height>500</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Ebrima</family>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QFrame#mainframe{
@@ -99,10 +162,15 @@ border-style:solid;
      <property name="geometry">
       <rect>
        <x>60</x>
-       <y>230</y>
+       <y>240</y>
        <width>111</width>
        <height>211</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Ebrima</family>
+      </font>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -118,6 +186,11 @@ border-style:solid;
         <width>31</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Ebrima</family>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QLabel{
@@ -145,7 +218,7 @@ background-color: transparent;
       </property>
       <property name="font">
        <font>
-        <family>MS Reference Sans Serif</family>
+        <family>Ebrima</family>
         <pointsize>12</pointsize>
        </font>
       </property>
@@ -171,6 +244,11 @@ background-color: transparent;
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>Ebrima</family>
+       </font>
+      </property>
       <property name="styleSheet">
        <string notr="true">QLabel{
 background-color: transparent;
@@ -188,6 +266,11 @@ background-color: transparent;
         <width>31</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Ebrima</family>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">QLabel{
@@ -215,7 +298,7 @@ background-color: transparent;
       </property>
       <property name="font">
        <font>
-        <family>MS Reference Sans Serif</family>
+        <family>Ebrima</family>
         <pointsize>12</pointsize>
        </font>
       </property>
@@ -249,7 +332,7 @@ background-color: transparent;
       </property>
       <property name="font">
        <font>
-        <family>MS Reference Sans Serif</family>
+        <family>Ebrima</family>
         <pointsize>12</pointsize>
        </font>
       </property>
@@ -276,6 +359,11 @@ background-color: transparent;
        <height>151</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Ebrima</family>
+      </font>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -299,6 +387,7 @@ background-color: transparent;
       </property>
       <property name="font">
        <font>
+        <family>Ebrima</family>
         <pointsize>12</pointsize>
        </font>
       </property>
@@ -331,7 +420,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>8</pointsize>
         </font>
        </property>
@@ -356,7 +445,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -384,7 +473,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -412,7 +501,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>8</pointsize>
         </font>
        </property>
@@ -440,7 +529,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -468,7 +557,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>8</pointsize>
         </font>
        </property>
@@ -496,246 +585,9 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>8</pointsize>
         </font>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QFrame" name="eqframe_2">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>50</y>
-        <width>341</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QFrame{
-	background-color:#EF5350;
-	border-style:none;
-}</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QLineEdit" name="z_2">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>10</y>
-         <width>30</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Reference Sans Serif</family>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::StrongFocus</enum>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_27">
-       <property name="geometry">
-        <rect>
-         <x>220</x>
-         <y>10</y>
-         <width>61</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Reference Sans Serif</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Z2  =</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_28">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>10</y>
-         <width>30</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Reference Sans Serif</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Y2</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="y_2">
-       <property name="geometry">
-        <rect>
-         <x>100</x>
-         <y>10</y>
-         <width>30</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Reference Sans Serif</family>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_29">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>10</y>
-         <width>30</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Reference Sans Serif</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>X2</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="x_2">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>10</y>
-         <width>30</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Reference Sans Serif</family>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QWidget" name="horizontalLayoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>60</y>
-         <width>160</width>
-         <height>80</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout"/>
-      </widget>
-      <widget class="QLineEdit" name="c_2">
-       <property name="geometry">
-        <rect>
-         <x>290</x>
-         <y>10</y>
-         <width>30</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="font">
-        <font>
-         <family>MS Reference Sans Serif</family>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::StrongFocus</enum>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -759,6 +611,7 @@ background-color: transparent;
       </property>
       <property name="font">
        <font>
+        <family>Ebrima</family>
         <pointsize>12</pointsize>
        </font>
       </property>
@@ -791,7 +644,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>8</pointsize>
         </font>
        </property>
@@ -816,7 +669,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -844,7 +697,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -872,7 +725,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>8</pointsize>
         </font>
        </property>
@@ -897,7 +750,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>12</pointsize>
         </font>
        </property>
@@ -925,7 +778,7 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>8</pointsize>
         </font>
        </property>
@@ -953,9 +806,252 @@ background-color: transparent;
        </property>
        <property name="font">
         <font>
-         <family>MS Reference Sans Serif</family>
+         <family>Ebrima</family>
          <pointsize>8</pointsize>
         </font>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QFrame" name="eqframe_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>341</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="font">
+       <font>
+        <family>Ebrima</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame{
+	background-color:#EF5350;
+	border-style:none;
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="z_2">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>10</y>
+         <width>30</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Ebrima</family>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_27">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>10</y>
+         <width>61</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Ebrima</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Z2  =</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_28">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>10</y>
+         <width>30</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Ebrima</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Y2</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="y_2">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>10</y>
+         <width>30</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Ebrima</family>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_29">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>10</y>
+         <width>30</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Ebrima</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>X2</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="x_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>10</y>
+         <width>30</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Ebrima</family>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QWidget" name="horizontalLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>60</y>
+         <width>160</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Ebrima</family>
+        </font>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout"/>
+      </widget>
+      <widget class="QLineEdit" name="c_2">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>10</y>
+         <width>30</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Ebrima</family>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -967,10 +1063,15 @@ background-color: transparent;
      <property name="geometry">
       <rect>
        <x>220</x>
-       <y>250</y>
+       <y>260</y>
        <width>161</width>
        <height>181</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Ebrima</family>
+      </font>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -989,7 +1090,7 @@ background-color: transparent;
       </property>
       <property name="font">
        <font>
-        <family>MS Reference Sans Serif</family>
+        <family>Ebrima</family>
         <pointsize>12</pointsize>
         <weight>50</weight>
         <bold>false</bold>
@@ -1021,8 +1122,8 @@ border-color: #777777;
       </property>
       <property name="font">
        <font>
-        <family>MS Reference Sans Serif</family>
-        <pointsize>12</pointsize>
+        <family>Ebrima</family>
+        <pointsize>13</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -1056,9 +1157,9 @@ color:#fff;
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>570</y>
-      <width>531</width>
-      <height>21</height>
+      <y>609</y>
+      <width>530</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -1081,12 +1182,15 @@ color:#fff;
   <tabstop>x_1</tabstop>
   <tabstop>y_1</tabstop>
   <tabstop>z_1</tabstop>
+  <tabstop>c_1</tabstop>
   <tabstop>x_2</tabstop>
   <tabstop>y_2</tabstop>
   <tabstop>z_2</tabstop>
+  <tabstop>c_2</tabstop>
   <tabstop>x_3</tabstop>
   <tabstop>y_3</tabstop>
   <tabstop>z_3</tabstop>
+  <tabstop>c_3</tabstop>
   <tabstop>calculate</tabstop>
   <tabstop>quit</tabstop>
  </tabstops>

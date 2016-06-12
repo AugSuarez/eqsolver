@@ -1,6 +1,8 @@
 #include "eqsolver.h"
 #include <QLabel>
 #include <QGraphicsDropShadowEffect>
+#include "coefficient.h"
+
 //#include <QtWebEngine>
 //#include <QtWebEngineWidgets>
 
@@ -10,6 +12,11 @@ eqsolver::eqsolver(QWidget *parent) :
 {
     ui->setupUi(this);
     setStyles();
+}
+
+eqsolver::~eqsolver()
+{
+    delete ui;
 }
 
 int eqsolver::btnCount = 1;
@@ -28,7 +35,7 @@ void eqsolver::newEqBtn(){
 }
 
 void eqsolver::setStyles(){
-    QString style = "QLineEdit{ background-color:#fff; border: 1px solid #eee; border-radius:1px;} QLineEdit:focus { background-color:#eee; }";
+    QString style = "QLineEdit{ background-color:#fff; border: 1px solid #ddd; border-radius:3px;} QLineEdit:focus { background-color:#eee;}";
     ui->matrixframe->setStyleSheet("QLabel { color:#fff; }" + style);
     ui->quit->setStyleSheet("QPushButton{ background-color:#EF5350; color: #fff; border-style: solid ; border-color: #777777; } QPushButton:pressed{ background-color: #ffdbbd; color:#000;}");
     ui->calculate->setStyleSheet("QPushButton{ background-color:#EF5350; color: #fff; border-style: solid ; border-color: #777777; } QPushButton:pressed{ background-color: #ffdbbd; color:#000;}");
@@ -46,13 +53,7 @@ void eqsolver::setStyles(){
     nameshadow->setYOffset(2);
     nameshadow->setBlurRadius(5);
     nameshadow->setColor(QColor(120, 90, 90, 40));
-    ui->namelabel->setGraphicsEffect(nameshadow);
-}
-
-
-eqsolver::~eqsolver()
-{
-    delete ui;
+    ui->nameframe->setGraphicsEffect(nameshadow);
 }
 
 void eqsolver::on_quit_clicked()
