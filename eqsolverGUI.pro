@@ -5,6 +5,9 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT  +=script
+#QT +=webenginewidgets
+#QT +=webengine
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,10 +16,9 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        eqsolver.cpp \
-    newlineobject.cpp
+        eqsolver.cpp
 
 HEADERS  += eqsolver.h \
-    newlineobject.h
+    coefficient.h
 
 FORMS    += eqsolver.ui

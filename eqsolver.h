@@ -24,7 +24,7 @@ public:
 private slots:
     void on_quit_clicked();
 
-    void on_quit_2_clicked();
+    void on_calculate_clicked();
 
 private:
     Ui::eqsolver *ui;

@@ -2,27 +2,26 @@
 *make QStruct Coefficient
 *coefficient is member of equation class,
 *equation is member in matrix class;
-*matrix class (maybe better to add matrix members to eqsolverclass instead of making a new matrix class)
-    *has 3 member equations
-    *has an equation vector
-    *has member create equation,
-    *has solve matrix function(CREEP!!)
+
+*matrix class (maybe better to add matrix members to eqsolver class instead of making a new matrix class)
+    *has 3 member equations, as in the 3 matrix lines
+    *has an equation vector{eq1,eq2,eq2}, to run isolateVar(Char varToIsolate)  ...(CREEP!!)
+    *has solve matrix function   ...(CREEP!!)
 
 *equation class
     *has 3 member vector of 3 lineEdits ui->x_1,ui->y_1...
-    *
     *has 3 member coefficients x,y,z
-    *has setX, setY, setZ function
-    *setX(QString fractionRep)
-    //fraction rep will be retrieved by for loop on line edit vector
-    //getText(ui->lineEditVector[i])
+    *has setX, setY, setZ function, which initialize Coefficient structs passing its fractional representation as a string-type argument
+        *setX(QString fractionRep)
+            //fraction rep will be retrieved by for loop on line edit vector
+            //getText(ui->lineEditVector[i])
     *has a coefficient vector
 
 *Coefficient struct
     *has QString fractionRep = lineEdit
     *has double doubleValue = numerInt/denomInt
     *has QString numerString, denomString
-    *has int numerInt, denomInt
+    *has int numerInt, denomInt=1
     *has bool hasDenom = false
 
 
@@ -34,7 +33,7 @@ QString readNumerator(string& numeratorString = "", bool& hasDenominator)
 {
     QTextStream in(lineEditString);
 	
-    while(lineEditString!=null)
+    while(!lineEditString.isNull())
     {
 		
         if (ch.isNumber())
