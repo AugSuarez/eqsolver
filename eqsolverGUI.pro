@@ -17,9 +17,11 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         eqsolver.cpp \
-    coefficient.cpp
+    coefficient.cpp \
+    equation.cpp
 
 HEADERS  += eqsolver.h \
-    coefficient.h
+    coefficient.h \
+    equation.h
 
 FORMS    += eqsolver.ui

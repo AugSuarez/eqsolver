@@ -14,7 +14,6 @@ class Coefficient{
         bool hasDenom = false;//is true if denom != 1;
 
         Coefficient(QString s);
-        ~Coefficient();
 
         void getNumer(QString& fractionRep, int& numerInt, bool& hasDenom);
         void getDenom(QString& fractionRep, int& denomInt);

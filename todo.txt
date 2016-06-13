@@ -9,15 +9,13 @@
     *has solve matrix function   ...(CREEP!!)
 
 *equation class
+    *Constructor uses 3 Coefficients
     *has 3 member vector of 3 lineEdits ui->x_1,ui->y_1...
     *has 3 member coefficients x,y,z
-    *has setX, setY, setZ function, which initialize Coefficient structs passing its fractional representation as a string-type argument
-        *setX(QString fractionRep)
-            //fraction rep will be retrieved by for loop on line edit vector
             //getText(ui->lineEditVector[i])
     *has a coefficient vector
 
-*Coefficient struct
+*Coefficient class
     *has QString fractionRep = lineEdit
     *has double doubleValue = numerInt/denomInt
     *has QString numerString, denomString
