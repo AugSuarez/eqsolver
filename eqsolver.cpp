@@ -65,6 +65,12 @@ void eqsolver::on_calculate_clicked()
 {
 
     Coefficient *x1 = new Coefficient(ui->x_1->text());//makes a fractional representation of the inputed text using string
+    Coefficient *y1 = new Coefficient(ui->y_1->text());
+    Coefficient *z1 = new Coefficient(ui->z_1->text());
 
-    ui->x_r->setText(QString::number(x1->denomInt));
+//    getLCD(x1,y1,z1);
+
+    ui->x_r->setText(QString::number(x1->numerInt));
+    ui->y_r->setText(QString::number(y1->numerInt));
+    ui->z_r->setText(QString::number(z1->numerInt));
 }

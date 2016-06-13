@@ -20,7 +20,7 @@ void Coefficient::getNumer(QString& fractionRep, int& numerInt, bool& hasDenom)
     {
         QChar ch = fractionRep.at(i);
 
-        if(ch.isNumber() || (ch.isSymbol() && (ch=='-' || ch=='+')) )
+        if(ch.isNumber() || (ch=='-' || ch=='+') )
             numerString += ch;
 
         else if (ch=='/' || ch=='\\')
