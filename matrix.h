@@ -12,7 +12,6 @@ class Matrix
         Equation isolateVar(Coefficient isoVar, std::vector<Coefficient> v);//isolate variable function, returns an equation with new coefficients
                         //and the isolated var's coefficient is turned to 1
         void solveMatrix(std::vector<Coefficient> v1, std::vector<Coefficient> v2, std::vector<Coefficient> v3);
-        Matrix();
 
 };
 #endif // MATRIX_H

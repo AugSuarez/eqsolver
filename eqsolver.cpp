@@ -110,34 +110,44 @@ int eqsolver::lcm(int a, int b)
     int bProduct = 1;
 
     std::vector<int> aCopy = getPrimeFact(a);
-
     std::vector<int> bCopy = getPrimeFact(b);
 
-QString s;
+    for(int i = 0; i<aCopy.size(); i++) { aProduct *= aCopy[i]; }
+    for(int x = 0; x<bCopy.size(); x++) { bProduct *= bCopy[x]; }
+
     for(int i = 0; i<aCopy.size(); i++)
     {
-        aProduct *= aCopy[i];
-
         for(int x = 0; x<bCopy.size(); x++)
         {
-            bProduct *= bCopy[x];
-
             if(aCopy[i]==bCopy[x])
             {
-                s += "Common Factor: " + QString::number(bCopy[x]) + ". ";
-                ui->lcm_3->setText(s);
                 commonFactors *= bCopy[x];
             }
         }
-
     }
 
-    return aProduct*bProduct/commonFactors;
+    return (aProduct*bProduct)/commonFactors;//parentheses unnecessary but there for the sake of the algorithm
 }
 
 void eqsolver::on_lcm_clicked()
 {
     Equation *eq1 = new Equation(ui->x_1->text(), ui->y_1->text(), ui->z_1->text(), ui->c_1->text());
-    int i = lcm(eq1->x->numerInt, eq1->y->numerInt);
-    ui->lcm_1->setText(QString::number(i));
+    int i = lcm(eq1->x->denomInt, lcm(eq1->y->denomInt, lcm(eq1->z->denomInt, eq1->c->denomInt)));
+
+    eq1->x->numerInt = i*eq1->x->numerInt/eq1->x->denomInt;
+    eq1->x->denomInt = eq1->x->denomInt/eq1->x->denomInt;
+
+    eq1->y->numerInt = i*eq1->y->numerInt/eq1->y->denomInt;
+    eq1->y->denomInt = eq1->y->denomInt/eq1->y->denomInt;
+
+    eq1->z->numerInt = i*eq1->z->numerInt/eq1->z->denomInt;
+    eq1->z->denomInt = eq1->z->denomInt/eq1->z->denomInt;
+
+    eq1->c->numerInt = i*eq1->c->numerInt/eq1->c->denomInt;
+    eq1->c->denomInt = eq1->c->denomInt/eq1->c->denomInt;
+
+    ui->lcm_1->setText( QString::number(i));
+
+    QString k = "-z = (" + QString::number(eq1->x->numerInt) + " x + " + QString::number(eq1->y->numerInt) + " y - " +  QString::number(eq1->c->numerInt) + ") / " + QString::number(eq1->z->numerInt);
+    ui->lcm_2->setText(k);
 }

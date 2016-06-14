@@ -1,4 +1,3 @@
-/*set QTextStream for QString
 *make QStruct Coefficient
 *coefficient is member of equation class,
 *equation is member in matrix class;
@@ -31,25 +30,6 @@
 	*getNumer()
 	*if hasDenom = true then getDenom()
 
-//function to get prime factorization of number
-std::vector<int> factorsRecursive(int n, std::vector<int> factorVector{})
-{	
-    if(n==1)
-        return factors;
-    else
-    {
-        for(i = 2; i<=n; i++)
-        {
-            if(n%i==0)
-            {
-                factorVector.push_back(i);
-                factorsRecursive(n/i, factorVector);
-	    }
-        }
-    }
-}
-
-//function to compare prime factorizations
-//int commonfactors = 1;
-//if member in common, commonfactors *= vectorb[i]
-vectorb[i] = 1;
+//find a way to write out equation after variable is isolated
+//find a way to do lcm without having to call it several times, maybe recursive? byt pushing back each coefficient into Equation Class's std::vector, and running through for loop from vector.start() to vector.end()-1
+    *isolate variables: multiply numerator by lcm, and divide lcm by denom to get new values
