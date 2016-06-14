@@ -5,6 +5,9 @@
 
 *matrix class (maybe better to add matrix members to eqsolver class instead of making a new matrix class)
     *has 3 member equations, as in the 3 matrix lines
+    *has a function to initialize the equations, which in turn initialize the coefficients
+        *init equation
+            *check if lineEdits have text in them, if all three do, then create equation object
     *has an equation vector{eq1,eq2,eq2}, to run isolateVar(Char varToIsolate)  ...(CREEP!!)
     *has solve matrix function   ...(CREEP!!)
 
@@ -28,29 +31,25 @@
 	*getNumer()
 	*if hasDenom = true then getDenom()
 
-
-*while line edit string is not null "in >> ch""
-
-QString getNumer(string& fractionrep, string& numeratorString = "", bool& hasDenominator)
-{
-    QTextStream in(fractionrep);
-	
-    while(!fractionrep.isNull())
+//function to get prime factorization of number
+std::vector<int> factorsRecursive(int n, std::vector<int> factorVector{})
+{	
+    if(n==1)
+        return factors;
+    else
     {
-		
-        if (ch.isNumber())
-            numerator string += ch; 
-		
-        else if (ch.isChar() && ch=='/')
-        {	
-            hasDenominator = true;
-            return numeratorString
+        for(i = 2; i<=n; i++)
+        {
+            if(n%i==0)
+            {
+                factorVector.push_back(i);
+                factorsRecursive(n/i, factorVector);
+	    }
         }
-	
-	else
-	{
-	    //errorWindow.show();
-            return "";
-	}
     }
-}	
+}
+
+//function to compare prime factorizations
+//int commonfactors = 1;
+//if member in common, commonfactors *= vectorb[i]
+vectorb[i] = 1;

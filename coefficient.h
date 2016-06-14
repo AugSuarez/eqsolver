@@ -15,6 +15,7 @@ class Coefficient{
 
         Coefficient(QString s);
 
+    private:
         void getNumer(QString& fractionRep, int& numerInt, bool& hasDenom);
         void getDenom(QString& fractionRep, int& denomInt);
 

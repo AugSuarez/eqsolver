@@ -1,7 +1,7 @@
 #include "eqsolver.h"
 #include <QLabel>
 #include <QGraphicsDropShadowEffect>
-#include "equation.h"//will be replaced by matrix.h or eqsolver.h
+#include "matrix.h"//will be replaced by matrix.h or eqsolver.h
 
 //#include <QtWebEngine>
 //#include <QtWebEngineWidgets>
@@ -22,7 +22,8 @@ eqsolver::~eqsolver()
 int eqsolver::btnCount = 1;
 int eqsolver::btny = 50;
 
-void eqsolver::newEqBtn(){
+void eqsolver::newEqBtn()
+{
 
     QString newEqBtnName = "newEqBtn_" + QString::number(btnCount);
     btnCount++;
@@ -70,9 +71,73 @@ void eqsolver::on_calculate_clicked()
 
 //    getLCD(x1,y1,z1);
 
-    Equation *eq1 = new Equation(ui->x_1->text(), ui->y_1->text(), ui->z_1->text());
+    Equation *eq1 = new Equation(ui->x_1->text(), ui->y_1->text(), ui->z_1->text(), ui->c_1->text());
 
     ui->x_r->setText(QString::number(eq1->x->numerInt));
     ui->y_r->setText(QString::number(eq1->y->numerInt));
     ui->z_r->setText(QString::number(eq1->z->numerInt));
+}
+
+std::vector<int> eqsolver::getPrimeFact(int n, std::vector<int> factorVector)
+{
+    while(n!=1)
+    {
+        for(int i = 2; i<=n; i++)
+        {
+            if(n%i==0)
+            {
+                if(factorVector[0]==1)
+                    factorVector.pop_back();
+
+                factorVector.push_back(i);
+                n /= i;
+                i = 1;
+            }
+        }
+    }
+    return factorVector;
+}
+
+int eqsolver::lcm(int a, int b)
+{
+    if(a%b==0 && a!=b)
+        return a;
+    else if(b%a==0 && a!=b)
+        return b;
+
+    int commonFactors=1;
+    int aProduct = 1;
+    int bProduct = 1;
+
+    std::vector<int> aCopy = getPrimeFact(a);
+
+    std::vector<int> bCopy = getPrimeFact(b);
+
+QString s;
+    for(int i = 0; i<aCopy.size(); i++)
+    {
+        aProduct *= aCopy[i];
+
+        for(int x = 0; x<bCopy.size(); x++)
+        {
+            bProduct *= bCopy[x];
+
+            if(aCopy[i]==bCopy[x])
+            {
+                s += "Common Factor: " + QString::number(bCopy[x]) + ". ";
+                ui->lcm_3->setText(s);
+                commonFactors *= bCopy[x];
+            }
+        }
+
+    }
+
+    return aProduct*bProduct/commonFactors;
+}
+
+void eqsolver::on_lcm_clicked()
+{
+    Equation *eq1 = new Equation(ui->x_1->text(), ui->y_1->text(), ui->z_1->text(), ui->c_1->text());
+    int i = lcm(eq1->x->numerInt, eq1->y->numerInt);
+    ui->lcm_1->setText(QString::number(i));
 }
