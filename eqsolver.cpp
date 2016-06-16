@@ -1,7 +1,7 @@
 #include "eqsolver.h"
 #include <QLabel>
 #include <QGraphicsDropShadowEffect>
-#include "matrix.h"//will be replaced by matrix.h or eqsolver.h
+#include "matrix.h"
 
 //#include <QtWebEngine>
 //#include <QtWebEngineWidgets>
@@ -40,6 +40,7 @@ void eqsolver::setStyles(){
     ui->matrixframe->setStyleSheet("QLabel { color:#fff; }" + style);
     ui->quit->setStyleSheet("QPushButton{ background-color:#EF5350; color: #fff; border-style: solid ; border-color: #777777; } QPushButton:pressed{ background-color: #ffdbbd; color:#000;}");
     ui->calculate->setStyleSheet("QPushButton{ background-color:#EF5350; color: #fff; border-style: solid ; border-color: #777777; } QPushButton:pressed{ background-color: #ffdbbd; color:#000;}");
+    ui->lcm->setStyleSheet("QPushButton{ background-color:#EF5350; color: #fff; border-style: solid ; border-color: #777777; } QPushButton:pressed{ background-color: #ffdbbd; color:#000;}");
 
     QGraphicsDropShadowEffect *mainshadow = new QGraphicsDropShadowEffect();
     mainshadow->setXOffset(1);
@@ -64,14 +65,7 @@ void eqsolver::on_quit_clicked()
 
 void eqsolver::on_calculate_clicked()
 {
-
-//    Coefficient *x1 = new Coefficient(ui->x_1->text());//makes a fractional representation of the inputed text using string
-//    Coefficient *y1 = new Coefficient(ui->y_1->text());
-//    Coefficient *z1 = new Coefficient(ui->z_1->text());
-
-//    getLCD(x1,y1,z1);
-
-    Equation *eq1 = new Equation(ui->x_1->text(), ui->y_1->text(), ui->z_1->text(), ui->c_1->text());
+    Equation *eq1 = new Equation(1, ui->centralWidget);
 
     ui->x_r->setText(QString::number(eq1->x->numerInt));
     ui->y_r->setText(QString::number(eq1->y->numerInt));
@@ -106,14 +100,12 @@ int eqsolver::lcm(int a, int b)
         return b;
 
     int commonFactors=1;
-    int aProduct = 1;
-    int bProduct = 1;
 
     std::vector<int> aCopy = getPrimeFact(a);
     std::vector<int> bCopy = getPrimeFact(b);
-
-    for(int i = 0; i<aCopy.size(); i++) { aProduct *= aCopy[i]; }
-    for(int x = 0; x<bCopy.size(); x++) { bProduct *= bCopy[x]; }
+    QString aS, bS;
+    for(int i = 0; i<aCopy.size(); i++) { aS += QString::number(aCopy[i]) + " "; }
+    for(int x = 0; x<bCopy.size(); x++) { bS += QString::number(bCopy[x]) + " "; }
 
     for(int i = 0; i<aCopy.size(); i++)
     {
@@ -122,32 +114,39 @@ int eqsolver::lcm(int a, int b)
             if(aCopy[i]==bCopy[x])
             {
                 commonFactors *= bCopy[x];
+                bCopy[x] = 1;
+                aCopy[i] = 1;
             }
         }
     }
+    ui->label->setText(aS);
+    ui->label_2->setText(bS);
+    return (a*b)/commonFactors;//parentheses there for the sake of the algorithm
+}
 
-    return (aProduct*bProduct)/commonFactors;//parentheses unnecessary but there for the sake of the algorithm
+int eqsolver::lcmVector(std::vector<Coefficient> v)
+{
+    int cumulLCM = 1;
+
+    for(int i = 0; i<v.size(); i++)
+    {
+        if(i == v.size())
+           return cumulLCM;
+        else
+           cumulLCM = lcm(cumulLCM, v[i].denomInt);
+    }
+
+    return cumulLCM;
 }
 
 void eqsolver::on_lcm_clicked()
 {
-    Equation *eq1 = new Equation(ui->x_1->text(), ui->y_1->text(), ui->z_1->text(), ui->c_1->text());
-    int i = lcm(eq1->x->denomInt, lcm(eq1->y->denomInt, lcm(eq1->z->denomInt, eq1->c->denomInt)));
+    Equation *eq1 = new Equation(1, ui->centralWidget);
+    ui->lcm_1->setText(QString::number(lcmVector(eq1->coefVector)));
 
-    eq1->x->numerInt = i*eq1->x->numerInt/eq1->x->denomInt;
-    eq1->x->denomInt = eq1->x->denomInt/eq1->x->denomInt;
+    Equation *eq2 = new Equation(2, ui->centralWidget);
+    ui->lcm_2->setText(QString::number(lcmVector(eq2->coefVector)));
 
-    eq1->y->numerInt = i*eq1->y->numerInt/eq1->y->denomInt;
-    eq1->y->denomInt = eq1->y->denomInt/eq1->y->denomInt;
-
-    eq1->z->numerInt = i*eq1->z->numerInt/eq1->z->denomInt;
-    eq1->z->denomInt = eq1->z->denomInt/eq1->z->denomInt;
-
-    eq1->c->numerInt = i*eq1->c->numerInt/eq1->c->denomInt;
-    eq1->c->denomInt = eq1->c->denomInt/eq1->c->denomInt;
-
-    ui->lcm_1->setText( QString::number(i));
-
-    QString k = "-z = (" + QString::number(eq1->x->numerInt) + " x + " + QString::number(eq1->y->numerInt) + " y - " +  QString::number(eq1->c->numerInt) + ") / " + QString::number(eq1->z->numerInt);
-    ui->lcm_2->setText(k);
+    Equation *eq3 = new Equation(3, ui->centralWidget);
+    ui->lcm_3->setText(QString::number(lcmVector(eq3->coefVector)));
 }

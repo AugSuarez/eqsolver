@@ -1,14 +1,14 @@
 #include "equation.h"
 #include "coefficient.h"
-Equation::Equation(QString xstr, QString ystr, QString zstr, QString cstr)
-{
-    this->x = new Coefficient(xstr);
-    this->y = new Coefficient(ystr);
-    this->z = new Coefficient(zstr);
-    this->c = new Coefficient(cstr);
+#include <QLineEdit>
 
-//    this->y->fractionRep = ystr;
-//    this->z->fractionRep = zstr;
+Equation::Equation(int n, QWidget *f)
+{
+    this->x = new Coefficient(f->findChild<QLineEdit *>("x_" + QString::number(n))->text());
+    this->y = new Coefficient(f->findChild<QLineEdit *>("y_" + QString::number(n))->text());
+    this->z = new Coefficient(f->findChild<QLineEdit *>("z_" + QString::number(n))->text());
+    this->c = new Coefficient(f->findChild<QLineEdit *>("c_" + QString::number(n))->text());
+
     coefVector.push_back(*x);
     coefVector.push_back(*y);
     coefVector.push_back(*z);

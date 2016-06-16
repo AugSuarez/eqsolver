@@ -1,15 +1,20 @@
 #include "matrix.h"
 #include "ui_eqsolver.h"
 #include "eqsolver.h"
-
-void Matrix::createEquation1(){
-    this->eq1 = new Equation(eqsolver::ui->x_1, eqsolver::ui->y_1, eqsolver::ui->z_1, eqsolver::ui->c_1);
+void Matrix::makeLinear(int i, std::vector<Coefficient>& v)
+{
+    for(i = 0; i<v.size(); i++)
+    {
+        v[i].numerInt = i*eq1->x->numerInt/eq1->x->denomInt;
+        v[i].denomInt = eq1->x->denomInt/eq1->x->denomInt;
+    }
+    return;
 }
 
-void Matrix::createEquation2(){
-    this->eq2 = new Equation(eqsolver::ui->x_2, eqsolver::ui->y_2, eqsolver::ui->z_2, eqsolver::ui->c_2);
-}
-
-void Matrix::createEquation3(){
-    this->eq3 = new Equation(eqsolver::ui->x_3, eqsolver::ui->y_3, eqsolver::ui->z_3, eqsolver::ui->c_3);
+Equation Matrix::isolateVar(Coefficient isoVar, std::vector<Coefficient>& v)
+{
+    int lcm = lcmVector(v);
+    makeLinear(lcm, v);
+    Equation *e = new Equation(v);
+    return e;
 }

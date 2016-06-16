@@ -2,13 +2,13 @@
 #define EQUATION_H
 
 #include "coefficient.h"
-#include "eqsolver.h"
+#include <QWidget>
 #include <vector>
 
 class Equation
 {
     public:
-        Equation(QString xstr, QString ystr, QString zstr, QString cstr);
+        Equation(int n, QWidget *f);
         ~Equation();
         std::vector<Coefficient> coefVector;
 

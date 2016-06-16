@@ -4,6 +4,11 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include "ui_eqsolver.h"
+
+#include "coefficient.h"
+#include "equation.h"
+#include "matrix.h"
+
 #include <vector>
 
 namespace Ui {
@@ -20,6 +25,7 @@ public:
     void setStyles();
 
     int lcm(int a = 1, int b = 1);
+    int lcmVector(std::vector<Coefficient> v);
     std::vector<int> getPrimeFact(int n, std::vector<int> factorVector = {1});
 
 

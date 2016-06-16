@@ -1,7 +1,7 @@
 #ifndef COEFFICIENT_H
 #define COEFFICIENT_H
-#include "eqsolver.h"
 #include <QString>
+
 class Coefficient{
 
     public:
