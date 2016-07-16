@@ -10,6 +10,10 @@ Coefficient::Coefficient(QString s) : fractionRep{s}
         getDenom(fractionRep, denomInt);
 }
 
+Coefficient::Coefficient(int numer, int denom) : numerInt{numer}, denomInt{denom}
+{
+}
+
 void Coefficient::getNumer(QString& fractionRep, int& numerInt, bool& hasDenom)
 {
     QString numerString;
@@ -57,4 +61,13 @@ void Coefficient::getDenom(QString& fractionRep, int& denomInt)
     }
 
     denomInt = denomString.toInt();
+}
+
+QString Coefficient::getFractionRep(){
+    if(this->numerInt >= 0)
+    {
+        return "+" + QString::number(this->numerInt) + "/" + QString::number(this->denomInt);
+    }
+    else
+        return QString::number(this->numerInt) + "/" + QString::number(this->denomInt);
 }

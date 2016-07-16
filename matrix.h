@@ -1,19 +1,24 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 #include "equation.h"
+#include "eqsolver.h"
+class Matrix{};//forward declaration for compare to fixed
+
 class Matrix
 {
 
     public:
         Equation *eq1, *eq2, *eq3;
-        void createEquation1();
-        void createEquation2();
-        void createEquation3();//function to initialize the equations, which in turn initialize the coefficients
+        std::vector<Equation> eqVector;
+        Matrix(Equation *e1, Equation *e2, Equation *e3);
 
-        void makeLinear(int i, std::vector<Coefficient>& v);
-        Equation isolateVar(Coefficient isoVar, std::vector<Coefficient> v);//isolate variable function, returns an equation with new coefficients
+        void solveMatrix(std::vector<Equation>& eqVector);
+
+        void isolateVar(std::vector<Equation>& eqVector);//isolate variable function, returns an equation with new coefficients
                         //and the isolated var's coefficient is turned to 1
-        void solveMatrix(std::vector<Coefficient> v1, std::vector<Coefficient> v2, std::vector<Coefficient> v3);
 
+        Matrix compareToFixed(std::vector<Equation> eqVector);
+
+        QString s1;
 };
 #endif // MATRIX_H

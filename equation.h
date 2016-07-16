@@ -8,9 +8,12 @@
 class Equation
 {
     public:
-        Equation(int n, QWidget *f);
-        ~Equation();
+        Equation(int n, QWidget *w);
+        Equation(Coefficient *xx, Coefficient *yy, Coefficient *zz, Coefficient *cc);
+        Equation(std::vector<Coefficient> v);
         std::vector<Coefficient> coefVector;
+        QString toString();
+        QString toStringIso();
 
     //make private?
         Coefficient *x;

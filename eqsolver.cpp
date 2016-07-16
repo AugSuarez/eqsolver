@@ -3,9 +3,6 @@
 #include <QGraphicsDropShadowEffect>
 #include "matrix.h"
 
-//#include <QtWebEngine>
-//#include <QtWebEngineWidgets>
-
 eqsolver::eqsolver(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::eqsolver)
@@ -17,22 +14,6 @@ eqsolver::eqsolver(QWidget *parent) :
 eqsolver::~eqsolver()
 {
     delete ui;
-}
-
-int eqsolver::btnCount = 1;
-int eqsolver::btny = 50;
-
-void eqsolver::newEqBtn()
-{
-
-    QString newEqBtnName = "newEqBtn_" + QString::number(btnCount);
-    btnCount++;
-
-    ui->quit->setObjectName(newEqBtnName);
-
-//    newEqBtn->setGeometry(50, btny, 100, 50);
-
-    btny+=60;
 }
 
 void eqsolver::setStyles(){
@@ -104,7 +85,7 @@ int eqsolver::lcm(int a, int b)
     std::vector<int> aCopy = getPrimeFact(a);
     std::vector<int> bCopy = getPrimeFact(b);
     QString aS, bS;
-    for(int i = 0; i<aCopy.size(); i++) { aS += QString::number(aCopy[i]) + " "; }
+    for(int i = 0; i<aCopy.size(); i++) { aS += QString::number(aCopy[i]) + " "; }//makes list of prime factorization
     for(int x = 0; x<bCopy.size(); x++) { bS += QString::number(bCopy[x]) + " "; }
 
     for(int i = 0; i<aCopy.size(); i++)
@@ -119,8 +100,8 @@ int eqsolver::lcm(int a, int b)
             }
         }
     }
-    ui->label->setText(aS);
-    ui->label_2->setText(bS);
+//    ui->label->setText(aS);
+//    ui->label_2->setText(bS);
     return (a*b)/commonFactors;//parentheses there for the sake of the algorithm
 }
 
@@ -142,11 +123,16 @@ int eqsolver::lcmVector(std::vector<Coefficient> v)
 void eqsolver::on_lcm_clicked()
 {
     Equation *eq1 = new Equation(1, ui->centralWidget);
-    ui->lcm_1->setText(QString::number(lcmVector(eq1->coefVector)));
+//    ui->lcm_1->setText(QString::number(lcmVector(eq1->coefVector)));
 
     Equation *eq2 = new Equation(2, ui->centralWidget);
     ui->lcm_2->setText(QString::number(lcmVector(eq2->coefVector)));
 
     Equation *eq3 = new Equation(3, ui->centralWidget);
     ui->lcm_3->setText(QString::number(lcmVector(eq3->coefVector)));
+
+    Matrix *matrix = new Matrix(eq1, eq2, eq3);
+    matrix->isolateVar(matrix->eqVector);
+//    matrix->compareToFixed(matrix->eqVector);
+    ui->lcm_1->setText(matrix->s1);
 }
